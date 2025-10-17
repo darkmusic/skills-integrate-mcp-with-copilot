@@ -107,7 +107,6 @@ def signup_for_activity(activity_name: str, email: str, db: Session = Depends(ge
         participant = Participant(email=email)
         db.add(participant)
     activity.participants.append(participant)
-    db.add(activity)
     db.commit()
     return {"message": f"Signed up {email} for {activity_name}"}
 
