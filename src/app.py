@@ -123,6 +123,5 @@ def unregister_from_activity(activity_name: str, email: str, db: Session = Depen
         raise HTTPException(status_code=400, detail="Student is not signed up for this activity")
 
     activity.participants.remove(participant)
-    db.add(activity)
     db.commit()
     return {"message": f"Unregistered {email} from {activity_name}"}
